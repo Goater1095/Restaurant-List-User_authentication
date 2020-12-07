@@ -33,7 +33,7 @@ module.exports = (app) => {
   passport.deserializeUser((id, done) => {
     User.findById(id)
       .lean() //有可能傳進前端樣板所以轉成JS物件
-      .then((user) => done(null.user))
-      .then((err) => done(err, null));
+      .then((user) => done(null, user))
+      .catch((err) => done(err, null));
   });
 };

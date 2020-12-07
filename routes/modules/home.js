@@ -1,11 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Rest = require("../../models/restaurant");
+const Rest = require('../../models/restaurant');
 
-router.get("/", (req, res) => {
-  Rest.find()
+router.get('/', (req, res) => {
+  const userId = req.user._id;
+  Rest.find({ userId })
     .lean()
-    .then((rests) => res.render("index", { resList: rests }))
+    .then((rests) => res.render('index', { resList: rests }))
     .catch((error) => console.error(error));
 });
 
