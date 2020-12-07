@@ -1,4 +1,4 @@
-# Restaurant-List Refactor (餐廳清單)
+# Restaurant-List Authentication (餐廳清單)
 
 一個使用 Express + node.js 建立的餐廳清單
 
@@ -26,7 +26,7 @@
 1.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
 
 ```
-git clone https://github.com/Goater1095/Restaurant-List.git
+git clone https://github.com/Goater1095/Restaurant-List-User_authentication.git
 ```
 
 2.初始
