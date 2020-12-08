@@ -23,25 +23,23 @@ db.once('open', () => {
     .genSalt(10)
     .then((salt) => bcrypt.hash(SEED_USER[0].password, salt))
     .then((hash) => {
-      User.create({
+      return User.create({
         email: SEED_USER[0].email,
         password: hash,
       });
     })
     .then((user) => {
-      return Promise.all(
+      Promise.all(
         Array.from({ length: 3 }, (_, i) => {
-          let tempRest = restList.result[i];
+          let tempRest = restList.results[i];
           tempRest.userId = user._id;
-          Rest.create(tempRest).catch((err) => console.log('create Rest 1 error'));
+          console.log(tempRest.name, 'start');
+          Rest.create(tempRest);
         })
-      );
-    })
-    .then(() => {
+      ).then(() => process.exit());
       console.log('done.');
-      process.exit();
     })
-    .catch((err) => console.log('create User 1 error'));
+    .catch((err) => console.log('create User 1 error', err));
 });
 
 // 第一位使用者：
