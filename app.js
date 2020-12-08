@@ -5,10 +5,12 @@ const usePassport = require('./config/passport');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
-
+if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config();
+}
 const Rest = require('./models/restaurant');
 const routes = require('./routes');
-const port = 3000;
+const port = process.env.PORT;
 require('./config/mongoose');
 
 const app = express();
@@ -18,7 +20,7 @@ app.use(express.static('public'));
 
 app.use(
   session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
