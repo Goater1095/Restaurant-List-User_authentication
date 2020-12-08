@@ -18,35 +18,30 @@ const SEED_USER = [
 
 db.once('open', () => {
   for (let number in SEED_USER) {
+    bcrypt
+      .genSalt(10)
+      .then((salt) => bcrypt.hash(SEED_USER[number].password, salt))
+      .then((hash) => {
+        return User.create({
+          email: SEED_USER[number].email,
+          password: hash,
+        });
+      })
+      .then((user) => {
+        Promise.all(
+          Array.from({ length: 3 }, (_, i) =>
+            Rest.create(
+              Object.assign(restList.results[i + number * 3], {
+                userId: user._id,
+              })
+            )
+          )
+        );
+      })
+      .then(() => {
+        console.log(`User number_${number} done!`);
+        // process.exit(); //這個不知道為何增加就會提前結束 (不是要等Promise.all 都執行完嗎??)
+      })
+      .catch((err) => console.log('create User 1 error', err));
   }
-  bcrypt
-    .genSalt(10)
-    .then((salt) => bcrypt.hash(SEED_USER[0].password, salt))
-    .then((hash) => {
-      return User.create({
-        email: SEED_USER[0].email,
-        password: hash,
-      });
-    })
-    .then((user) => {
-      Promise.all(
-        Array.from({ length: 3 }, (_, i) => {
-          let tempRest = restList.results[i];
-          tempRest.userId = user._id;
-          console.log(tempRest.name, 'start');
-          Rest.create(tempRest);
-        })
-      ).then(() => process.exit());
-      console.log('done.');
-    })
-    .catch((err) => console.log('create User 1 error', err));
 });
-
-// 第一位使用者：
-// email: user1@example.com
-// password: 12345678
-// 擁有 #1, #2, #3 號餐廳
-// 第二位使用者：
-// email: user2@example.com
-// password: 12345678
-// 擁有 #4, #5, #6 號餐廳
