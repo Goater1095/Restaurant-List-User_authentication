@@ -1,6 +1,8 @@
 # Restaurant-List Authentication (個人餐廳清單)
 
-一個使用 Express + node.js 建立的個人化餐廳清單
+一個使用 Express + node.js 建立的個人化餐廳清單 
+
+(heroku 連結: https://protected-oasis-86076.herokuapp.com/users/login)
 
 ![Login Page](/public/images/login.png)
 ![Register Page](/public/images/register.png)
