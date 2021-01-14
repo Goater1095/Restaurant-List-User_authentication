@@ -16,9 +16,9 @@ const SEED_USER = [
   { email: 'user2@example.com', password: '12345678' },
 ];
 
-db.once('open', () => {
+db.once('open', async () => {
   for (let number in SEED_USER) {
-    bcrypt
+    await bcrypt
       .genSalt(10)
       .then((salt) => bcrypt.hash(SEED_USER[number].password, salt))
       .then((hash) => {
@@ -40,8 +40,9 @@ db.once('open', () => {
       })
       .then(() => {
         console.log(`User number_${number} done!`);
-        // process.exit(); //這個不知道為何增加就會提前結束 (不是要等Promise.all 都執行完嗎??)
+        // process.exit(); //因為for迴圈會碰到就會結束程序 要放在迴圈外 並且要用async/await確認迴圈內跟DB相關的執行完畢
       })
       .catch((err) => console.log('create User 1 error', err));
   }
+  process.exit();
 });

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const restSchema = new Schema({
+const restaurantSchema = new Schema({
   id: {
     type: Number,
   },
@@ -39,4 +39,4 @@ const restSchema = new Schema({
     required: true,
   },
 });
-module.exports = mongoose.model('Rest', restSchema);
+module.exports = mongoose.model('Rest', restaurantSchema);
