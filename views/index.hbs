@@ -58,17 +58,17 @@
                 </span>
 
                 <div class='function'>
-                  <a class="btn btn-light rounded-circle btn-sm border-0" href="./restaurants/{{this._id}}"
+                  <a class="btn btn-light rounded-circle btn-sm border-0" href="/restaurants/{{this._id}}"
                     role="button">
                     <i class="fas fa-info-circle "></i>
                   </a>
 
-                  <a class="btn btn-light rounded-circle btn-sm border-0" href="./restaurants/{{this._id}}/edit"
+                  <a class="btn btn-light rounded-circle btn-sm border-0" href="/restaurants/{{this._id}}/edit"
                     role="button">
                     <i class="fas fa-pen "></i>
                   </a>
 
-                  <form action="./restaurants/{{this._id}}?_method=DELETE" style="display: inline;" method="POST"
+                  <form action="/restaurants/{{this._id}}?_method=DELETE" style="display: inline;" method="POST"
                     onsubmit="return confirm('確認要刪除該筆餐廳嗎？')">
                     <button type="submit" class="btn btn-light rounded-circle btn-sm border-0">
                       <i class="fas fa-trash "></i></button>
