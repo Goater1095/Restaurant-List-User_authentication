@@ -9,7 +9,7 @@
           <span class="text-secondary">
             中文名稱：
           </span>
-          <input class="form-control" type="text" name="name" value="{{ rest.name }}">
+          <input class="form-control" type="text" name="name" value="{{ rest.name }}" required>
         </p>
         <p class="mb-1">
           <span class="text-secondary">
@@ -21,37 +21,38 @@
           <span class="text-secondary">
             類別：
           </span>
-          <input class="form-control" type="text" name="category" value="{{ rest.category }}">
+          <input class="form-control" type="text" name="category" value="{{ rest.category }}" required>
         </p>
         <p class="mb-1">
           <span class="text-secondary">
             圖片網址：
           </span>
-          <input class="form-control" type="text" name="image" value="{{ rest.image }}">
+          <input class="form-control" type="url" name="image" value="{{ rest.image }}">
         </p>
         <p class="mb-1">
           <span class="text-secondary">
             地址：
           </span>
-          <input class="form-control" type="text" name="location" value="{{ rest.location}}">
+          <input class="form-control" type="text" name="location" value="{{ rest.location}}" required>
         </p>
         <p class="mb-1">
           <span class="text-secondary">
             電話：
           </span>
-          <input class="form-control" type="text" name="phone" value="{{ rest.phone }}">
+          <input class="form-control" type="tel" name="phone" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}"
+            placeholder="01-2345-6789" value="{{ rest.phone }}" required>
         </p>
         <p class="mb-1">
           <span class="text-secondary">
             Google Map 位址：
           </span>
-          <input class="form-control" type="text" name="google_map" value="{{ rest.google_map }}">
+          <input class="form-control" type="url" name="google_map" value="{{ rest.google_map }}">
         </p>
         <p class="mb-1">
           <span class="text-secondary">
             評分：
           </span>
-          <input class="form-control" type="text" name="rating" value="{{ rest.rating }}">
+          <input class="form-control" type="number" name="rating" value="{{ rest.rating }}">
         </p>
         <p class="mb-1">
           <span class="text-secondary">
